@@ -8,7 +8,7 @@ COPY ./object_detection /app/object_detection
 
 # RUN apt clean
 RUN apt update
-RUN apt-get -y install tesseract-ocr
+RUN apt-get -y install tesseract-ocr libgl1
 RUN pip install --upgrade pip
 RUN pip install --upgrade -r /app/api/requirements.txt
 
