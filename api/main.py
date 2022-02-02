@@ -27,7 +27,8 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['http://[2605:fd00:4:1001:f816:3eff:fe67:1ff9]', 'http://localhost', 'http://localhost:3000'],
+    allow_origins=['*'],
+    #allow_origins=['http://[2605:fd00:4:1001:f816:3eff:fe67:1ff9]', 'http://localhost', 'http://localhost:3000'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -35,6 +36,7 @@ app.add_middleware(
 
 models.Base.metadata.create_all(engine)
 
+'''
 def get_db():
     """ database connection middleware
     """
@@ -96,9 +98,10 @@ def login_user(user: schemas.User, db: Session = Depends(get_db)):
     access_token = sign_jwt({"user": user.email})
     response_data = {'access_token': access_token}
     return JSONResponse(content=jsonable_encoder(response_data))
+'''
 
 @app.post('/getImageFeatures', response_model=schemas.GetImageFeaturesResponse)
-async def get_features(features: str = None, files: List[UploadFile] = File(...), user: str = Depends(verify_jwt)):
+async def get_features(features: str = None, files: List[UploadFile] = File(...)): #user: str = Depends(verify_jwt)
     """ Endpoint to get analysis of multiple images
 
     Args:
@@ -140,7 +143,7 @@ async def get_features(features: str = None, files: List[UploadFile] = File(...)
     return JSONResponse(content=jsonable_encoder(image_features))
 
 @app.post('/getImageFeaturesBase64', response_model=schemas.GetImageFeaturesResponse)
-async def get_features(files: List[schemas.Base64Image], features: str = None, user: str = Depends(verify_jwt)):
+async def get_features(files: List[schemas.Base64Image], features: str = None): #user: str = Depends(verify_jwt)
     """ Endpoint to get analysis of multiple base64 images
 
     Args:
