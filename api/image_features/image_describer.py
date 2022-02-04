@@ -37,8 +37,8 @@ class ImageDescriber:
             feature_analysis_results.append(features_analyses)
         images_analyses = {"feature_analysis_results": feature_analysis_results,}
 
-        aggreage_analysis = self._do_aggreagate_analysis_on_images(image_infos, feature_analysis_results)
-        images_analyses.update(aggreage_analysis)
+        #aggreage_analysis = self._do_aggreagate_analysis_on_images(image_infos, feature_analysis_results)
+        #images_analyses.update(aggreage_analysis)
         return images_analyses
 
     def _analyze_image(self, image_info: ImageInfo) -> Dict[str, Any]:

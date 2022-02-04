@@ -9,6 +9,9 @@ from api.image_features import descriptions
 from api.image_features import tf_hub_client
 from api.image_features.object_detection import object_detection_models_map
 from object_detection.utils import visualization_utils as viz_utils
+#import os
+
+#os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 class ObjectDetector:
     """Used to detect objects present in a image using TF HUB models

@@ -6,6 +6,17 @@ from api.image_features import descriptions
 from api.image_features import tf_hub_client
 from api.image_features.image_classification import image_classification_models_map
 
+import os
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+#print("GPU is", "available" if tf.config.list_physical_devices('GPU') else "NOT AVAILABLE")
+
+#from tensorflow.python.client import device_lib
+#def get_available_devices():
+#    local_device_protos = device_lib.list_local_devices()
+#    return [x.name for x in local_device_protos]
+#print(get_available_devices()) 
 
 class ImageClassifier:
     """Uses pretrained models to classify images."""

@@ -1,0 +1,23 @@
+services:
+
+  ai4buzz:
+    #build: .
+    image: ai4buzz-imgs2:latest
+    container_name: ai4buzz-imgs2
+    restart: always
+    volumes:
+      - ./api:/app/api
+      #- ./nltk_data:/root/nltk_data
+    ports:
+      - "80:80"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    #environment:
+    #  - PORT=80
+    #  - TIMEOUT=500
+      #- BIND=0.0.0.0:81
+      #- WORKERS_PER_CORE=0.5
+      #- MAX_WORKERS=5
