@@ -6,7 +6,6 @@ import numpy as np
 
 #from api.image_features.feature_analyzer import FeatureAnalyzer
 
-
 class ColorSchemeAnalyzer():
     def get_descriptions(self, image):
         """ get color palette of image
@@ -29,10 +28,9 @@ class ColorSchemeAnalyzer():
         count = 0
         for color in description:
             if color.proportion > 0.05: # only add colours above the set threshold %
-                
 
                 colors.append(
-                    {  
+                    {
                         "red": color.rgb.r,
                         "green": color.rgb.g,
                         "blue": color.rgb.b,
@@ -76,8 +74,8 @@ class ColorSchemeAnalyzer():
         center = np.uint8(center)
 
         return center
-        
 
+'''
 if __name__ == "__main__":
     colorSchemeAnalyzer = ColorSchemeAnalyzer()
     test_colours = [[255,201,13], [237,27,36], [0,163,232]]
@@ -85,3 +83,4 @@ if __name__ == "__main__":
 
     print(colorSchemeAnalyzer._get_palette_k_means('colour_test.jpg',3))
     print(test_colours)
+'''

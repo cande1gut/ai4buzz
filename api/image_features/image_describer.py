@@ -52,7 +52,7 @@ class ImageDescriber:
                     image_feature_model.get_descriptions, image_info.pil_image
                 )
                 image_feature_futures[image_feature] = image_feature_future
-            
+
             for image_feature, image_feature_future in image_feature_futures.items():
                 image_feature_description = image_feature_future.result()
                 image_feature_report = self._report_generator.generate_report(image_feature_description)

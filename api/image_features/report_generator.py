@@ -7,7 +7,6 @@ from io import BytesIO
 from typing import Any, Dict, List, Union
 from api.image_features import descriptions
 
-
 class ReportGenerator:
     """Generates report for each image feature extraction model."""
 

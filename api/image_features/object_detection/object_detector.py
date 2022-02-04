@@ -10,7 +10,6 @@ from api.image_features import tf_hub_client
 from api.image_features.object_detection import object_detection_models_map
 from object_detection.utils import visualization_utils as viz_utils
 #import os
-
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 class ObjectDetector:
@@ -34,8 +33,7 @@ class ObjectDetector:
         predictions = self._get_predictions(result)
         bounded_box_np_image = self._get_bounded_box_image(np_image, result)
         image_string = self._encode_image_as_base64(bounded_box_np_image)
-        return descriptions.Descriptions(feature="Object Detection", 
-            model_name=self._model_name, descriptions=predictions, processed_image=image_string)
+        return descriptions.Descriptions(feature="Object Detection", model_name=self._model_name, descriptions=predictions, processed_image=image_string)
 
     def _process_image_for_model(self, image) -> np.ndarray:
         """image: PIL.JpegImagePlugin.JpegImageFile"""
@@ -45,7 +43,7 @@ class ObjectDetector:
             (1, im_height, im_width, 3)).astype(np.uint8)
 
     def _run_model_on_image(self, np_image: np.ndarray) -> Dict[str, Any]:
-        object_detector = self._tf_hub_client.get_object_detection_model_from_cahce_else_load(self._model_name)
+        object_detector = self._tf_hub_client.get_object_detection_model_from_cache_else_load(self._model_name)
         results = object_detector(np_image)
         result = {key:value.numpy() for key,value in results.items()}
         return result

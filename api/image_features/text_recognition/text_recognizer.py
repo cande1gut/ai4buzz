@@ -4,7 +4,6 @@ import cv2
 import pytesseract
 import numpy as np
 
-
 class TextRecognizer:
     """Uses OpenCV to detect and tesseract to recognize text."""
 

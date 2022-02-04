@@ -28,7 +28,7 @@ class ImageFeatureModelFactory:
             return TextRecognizer()
         elif image_feature == 'face_analysis':
             return FaceDetector()
-        elif image_feature == 'dendrogram':
-            return DendrogramGenerator()
-        elif image_feature == 'collage':
-            return CollageGenerator()
+        #elif image_feature == 'dendrogram':
+        #    return DendrogramGenerator()
+        #elif image_feature == 'collage':
+        #    return CollageGenerator()

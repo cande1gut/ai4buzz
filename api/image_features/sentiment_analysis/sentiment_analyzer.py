@@ -9,10 +9,10 @@ Module containing class to analyze and classify sentiments in image
 # model_path = 'vgg19_finetuned_all.pth'
 
 import gdown, os.path
-model_url = 'https://drive.google.com/uc?id=1SwbKfAUFWUvJ1vQG9jFLBarcNuSeLelH'
+#model_url = 'https://drive.google.com/uc?id=1SwbKfAUFWUvJ1vQG9jFLBarcNuSeLelH'
 model_path = 'api/image_features/sentiment_analysis/vgg19_finetuned_all.pth'
-if not os.path.exists(model_path):
-    gdown.download(model_url, model_path)
+#if not os.path.exists(model_path):
+#    gdown.download(model_url, model_path)
 
 from api.image_features.sentiment_analysis.vgg19 import KitModel as VGG19
 from api.image_features.feature_analyzer import FeatureAnalyzer
@@ -26,7 +26,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from io import BytesIO
 from glob import glob
-
 
 class ImageListDataset(Dataset):
     """
@@ -67,7 +66,8 @@ class SentimentAnalyzer(FeatureAnalyzer):
         to turn off gradients computation
         """
 
-        self.device = torch.device("cpu")
+        #self.device = torch.device("cpu")
+        self.device = torch.device("cuda:0")
         self.model = VGG19(model_path).to(self.device)
         self.transform = transforms.Compose([
             transforms.Resize((224, 224)),
@@ -116,7 +116,7 @@ class SentimentAnalyzer(FeatureAnalyzer):
         self.description_dict["sentiment_array[neg,neu,pos]"] = description
         self.description_dict["degrees"] = degrees_dict
 
-
+'''
 if __name__=='__main__':
     FnameList = sorted(glob('C:/Users/Joy/UofA-Drive/Fall-2021/CMPUT-401/Project/images/*', recursive=True))
     print(FnameList)
@@ -134,3 +134,4 @@ if __name__=='__main__':
         len(ImageList), 
         batch_size, 
         end_time - start_time))
+'''
