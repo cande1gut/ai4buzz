@@ -2,8 +2,8 @@ services:
 
   ai4buzz:
     #build: .
-    image: ai4buzz-imgs2:latest
-    container_name: ai4buzz-imgs2
+    image: ai4buzz-imgs:latest
+    container_name: ai4buzz-imgs
     restart: always
     volumes:
       - ./api:/app/api
@@ -15,6 +15,9 @@ services:
         reservations:
           devices:
             - capabilities: [gpu]
+    command:
+      bash -c "uvicorn api.main:app --host 0.0.0.0 --port 80"
+      #bash -c "gunicorn api.main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:80"
     #environment:
     #  - PORT=80
     #  - TIMEOUT=500

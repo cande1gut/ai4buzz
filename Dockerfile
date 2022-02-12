@@ -18,6 +18,6 @@ RUN apt update
 RUN apt-get -y install tesseract-ocr libgl1 python3-pip python3-dev libpq-dev
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
-RUN pip install --upgrade -r /app/api/requirements.txt
+RUN pip install --upgrade --no-cache-dir -r /app/api/requirements.txt
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "80"]
+#CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "80"]

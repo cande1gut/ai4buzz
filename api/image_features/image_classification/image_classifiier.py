@@ -7,6 +7,7 @@ from api.image_features import tf_hub_client
 from api.image_features.image_classification import image_classification_models_map
 #import os
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+#tf.config.gpu.set_per_process_memory_growth(True)
 
 class ImageClassifier:
     """Uses pretrained models to classify images."""
